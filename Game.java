@@ -23,12 +23,12 @@ public class Game {
 	public static ArrayList<Card> createCard() {
 		ArrayList<Card> result = new ArrayList<Card>();
 		Card tempCard;
-		for(int i = 0; i < 56; i++) {
-			if(i < 40) {
-				tempCard = new Card(i / 10, i % 10);
+		for(int i = 1; i <= 56; i++) {
+			if(i <= 40) {
+				tempCard = new Card((i - 1) / 10, i % 10);
 			}
-			else if(i < 52) {
-				tempCard = new ActionCard((i - 40) / 3, (i - 40) % 3 + 10);
+			else if(i <= 52) {
+				tempCard = new ActionCard((i - 41) / 3, (i - 41) % 3 + 10);
 			} 
 			else {
 				tempCard = new ActionCard(4, i % 2 + 13);
@@ -40,15 +40,7 @@ public class Game {
 	}
 	public static void suffleCard(ArrayList<Card> aDeck) {
 		Card tempCard;
-		int random1, random2;
-		for(int i = 0; i < 56; i++) {
-			random1 = (int) (Math.random() * 56);
-			random2 = (int) (Math.random() * 56);
-			tempCard = new Card(aDeck.get(random1));
-			aDeck.set(random1, aDeck.get(random2));
-			aDeck.set(random2, tempCard);
-			
-		}
+		
 	}
 
 }

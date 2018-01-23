@@ -24,7 +24,8 @@ public class Card {
 		fColor = aCardObj.fColor;
 		fSymbol = aCardObj.fSymbol;
 	}
-	
+
+
 	public eColor getColor() {
 		return fColor;
 	}
@@ -32,7 +33,7 @@ public class Card {
 	public eSymbol getSymbol() {
 		return fSymbol;
 	}
-		
+
 	public void action () {
 		
 	}
