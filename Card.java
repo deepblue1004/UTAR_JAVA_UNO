@@ -28,6 +28,7 @@ public class Card {
 	public eSymbol getSymbol() {
 		return fSymbol;
 	}
+		
 	public void action () {
 		
 	}
