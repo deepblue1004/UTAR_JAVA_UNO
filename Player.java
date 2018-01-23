@@ -22,7 +22,10 @@ public class Player {
 	
 	public void addCard(Card aNewCard) {
 		fHandCard.add(aNewCard);
-		
+	}
+	
+	public void removeCard(Card aCard) {
+		fHandCard.remove(aCard);
 	}
 }	
 
