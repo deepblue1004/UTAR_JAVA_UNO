@@ -17,8 +17,12 @@ public class Card {
 		if((aColor >=0 && aColor <= 4) && (aSymbol >=0 && aSymbol <= 15)) {
 			fColor = eColor.values()[aColor];
 			fSymbol = eSymbol.values()[aSymbol];
-		}
-			
+		}		
+	}
+	
+	public Card(Card aCardObj) {
+		fColor = aCardObj.fColor;
+		fSymbol = aCardObj.fSymbol;
 	}
 	
 	public eColor getColor() {
