@@ -24,6 +24,10 @@ public class Player {
 		fHandCard.add(aNewCard);
 	}
 	
+	public Card getCard(int aIndex) {
+		return fHandCard.get(aIndex);
+	}
+	
 	public void removeCard(Card aCard) {
 		fHandCard.remove(aCard);
 	}

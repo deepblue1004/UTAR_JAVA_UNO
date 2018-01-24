@@ -8,7 +8,7 @@ public class Game {
 	private ArrayList<Card> fPile;
 	
 	//Constructor
-	public Game(Object[] aPlayerName) {
+	public Game(String[] aPlayerName) {
 		fPlayer = new Player[aPlayerName.length];
 		fDeck = createCard();
 		shuffleCard(fDeck);
@@ -21,6 +21,10 @@ public class Game {
 	
 	public Card getDeck(int aIndex) {
 		return fDeck.get(aIndex);
+	}
+	
+	public int getPlayerCount() {
+		return fPlayer.length;		
 	}
 	
 	public int getDeckCount() {
@@ -62,7 +66,7 @@ public class Game {
 	}
 
 	//Distribute Card to Player
-	private static void distributeCard(ArrayList<Card> aDeck, Player[] aPlayer, Object[] aPlayerName) {
+	private static void distributeCard(ArrayList<Card> aDeck, Player[] aPlayer, String[] aPlayerName) {
 		for(int i = 0; i < aPlayer.length; i++) {
 			aPlayer[i] = new Player(aPlayerName[i].toString());
 			for(int j = 0; j < 5; j++) {
