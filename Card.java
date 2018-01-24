@@ -34,7 +34,13 @@ public class Card {
 	public eSymbol getSymbol() {
 		return fSymbol;
 	}
-
+	
+	public String[] getFace() {
+		String[] result = new String[2];
+		result[0] = fColor.toString();
+		result[1] = fSymbol.toString();
+		return result;
+	}
 	public void action () {
 		
 	}

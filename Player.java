@@ -6,7 +6,6 @@ public class Player {
 	private String fName;
 	private ArrayList<Card> fHandCard;
 	
-	
 	public Player(String aName) {
 		fName = aName;
 		fHandCard = new ArrayList<Card>();
@@ -28,8 +27,24 @@ public class Player {
 		return fHandCard.get(aIndex);
 	}
 	
-	public void removeCard(Card aCard) {
+	public int removeCard(Card aCard) {
+		int result = fHandCard.indexOf(aCard);
 		fHandCard.remove(aCard);
+		return result;
 	}
+	
+	public Card removeCard(int aIndex) {
+		return fHandCard.remove(aIndex);
+	}
+	
+	public boolean win(){
+		if(fHandCard.size() == 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 }	
 

@@ -1,26 +1,37 @@
-import java.util.ArrayList;
-
 //Game.java
+
+import java.util.ArrayList;
 
 public class Game {
 	private Player[] fPlayer;
 	private ArrayList<Card> fDeck;
 	private ArrayList<Card> fPile;
+	private int fPlayerTurn;
 	
 	//Constructor
 	public Game(String[] aPlayerName) {
 		fPlayer = new Player[aPlayerName.length];
-		fDeck = createCard();
+		fDeck = new ArrayList<Card>();
+		fPile = new ArrayList<Card>();
+		
+		createCard(fDeck);
 		shuffleCard(fDeck);
 		distributeCard(fDeck, fPlayer, aPlayerName);
+		fPlayerTurn = 0;
+		fPile.add(fDeck.remove(0));
 	}
 	
+	//****Start get and set method****
 	public Player getPlayer(int aIndex) {
 		return fPlayer[aIndex];
 	}
 	
 	public Card getDeck(int aIndex) {
 		return fDeck.get(aIndex);
+	}
+	
+	public Card getPile(int index) {
+		return fPile.get(index);
 	}
 	
 	public int getPlayerCount() {
@@ -31,9 +42,26 @@ public class Game {
 		return fDeck.size();
 	}
 	
+	public int getPlayerTurn() {
+		return fPlayerTurn;
+	}
+	
+	public Player getPlaying() {
+		return fPlayer[fPlayerTurn];
+	}
+	
+	public void setPlayerTurn(int aPlayerTurn) {
+		fPlayerTurn = aPlayerTurn;
+	}
+	
+	public void addToPile(Card aCard) {
+		fPile.add(0, aCard);
+	}
+	
+	//****End get and set method****
+	
 	//Create a Deck of Card
-	private static ArrayList<Card> createCard() {
-		ArrayList<Card> result = new ArrayList<Card>();
+	private static void createCard(ArrayList<Card> aDeck) {
 		Card tempCard;
 		for(int i = 0; i < 56; i++) {
 			if(i < 40) {
@@ -45,10 +73,9 @@ public class Game {
 			else {
 				tempCard = new ActionCard(4, i % 2 + 13);
 			}
-			result.add(tempCard);
+			aDeck.add(tempCard);
 		}
-		
-		return result;
+
 	}
 	
 	//Shuffle Deck Card
@@ -73,5 +100,14 @@ public class Game {
 				aPlayer[i].addCard(aDeck.remove(0));
 			}
 		}
+	}
+	
+	public void startGame() {
+		
+		
+	}
+	
+	public boolean endGame() {
+		return false;
 	}
 }
