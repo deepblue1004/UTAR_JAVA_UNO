@@ -1,7 +1,5 @@
-
 //GameUI.java
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class GameUI {
@@ -19,19 +17,23 @@ public class GameUI {
 			System.out.print("Player " + (i + 1) + ": ");
 			playerName[i] = input.next();
 		}
-		input.close();
 
 		Game myGame = new Game(playerName);
 
 		// while(!myGame.endGame()){
-		System.out.println("Top on Pile: " + Arrays.toString(myGame.getPile(0).getFace()));
+		System.out.println("Top on Pile: " + myGame.getPile(0).toString());
 
 		System.out.println(myGame.getPlaying().getName() + " :");
-		for (int j = 0; j < 5; j++) {
-			System.out.println(Arrays.toString(myGame.getPlaying().getCard(j).getFace()));
+		for (Card c : myGame.getPlaying().getCard()) {
+			System.out.println(c.toString());
 		}
 
+		System.out.print("\nSelect an action:\n"
+				+ "1. Discard a card.\n"
+				+ "2. Darw a card.\n"
+				+ "Selection: ");
+		input.nextInt();
 		// }
-
+		input.close();
 	}
 }

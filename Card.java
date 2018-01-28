@@ -1,12 +1,12 @@
 //Card.java
 
-public class Card {
+public class Card implements Comparable<Card> {
 	private enum eColor {
-		RED, GREEN, BLUE, YELLOW, WILD;
+		RED, GREEN, BLUE, YELLOW, WILD
 	}
 
 	private enum eSymbol {
-		ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, SKIP, REVERSE, DRAW_2, WILD, WILD_DRAW_4;
+		ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, SKIP, REVERSE, DRAW_2, WILD, WILD_DRAW_4
 	}
 
 	private eColor fColor;
@@ -39,6 +39,26 @@ public class Card {
 		result[0] = fColor.toString();
 		result[1] = fSymbol.toString();
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return fColor.toString() + ", " + fSymbol.toString();
+	}
+
+	@Override
+	public int compareTo(Card c) {
+		if (fColor.compareTo(c.fColor) < 0)
+			return -1;
+		else if (fColor.compareTo(c.fColor) == 0)
+			if (fSymbol.compareTo(c.fSymbol) < 0)
+				return -1;
+			else if (fSymbol.compareTo(c.fSymbol) == 0)
+				return 0;
+			else
+				return 1;
+		else
+			return 1;
 	}
 
 	public void action() {

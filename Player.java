@@ -2,6 +2,7 @@
 //Player.java
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Player {
 	private String fName;
@@ -12,7 +13,14 @@ public class Player {
 	public Player(String aName) {
 		fName = aName;
 		fHandCard = new ArrayList<Card>();
-		numOfPlayer += 1;
+		numOfPlayer++;
+	}
+
+	// Copy Constructor
+	public Player(Player aPlayerObj) {
+		fName = aPlayerObj.fName;
+		fHandCard = new ArrayList<Card>(aPlayerObj.fHandCard);
+		// Card class is immutable
 	}
 
 	// ****Start get and set method****
@@ -22,6 +30,10 @@ public class Player {
 
 	public Card getCard(int aIndex) {
 		return fHandCard.get(aIndex);
+	}
+
+	public ArrayList<Card> getCard() {
+		return new ArrayList<Card>(fHandCard);
 	}
 
 	public static int getNum() {
@@ -35,6 +47,7 @@ public class Player {
 
 	public void addCard(Card aNewCard) {
 		fHandCard.add(aNewCard);
+		Collections.sort(fHandCard);
 	}
 
 	// Remove hand card by Object
@@ -52,7 +65,7 @@ public class Player {
 	// Determine if the player has playable cards
 	public boolean playable() {
 		for (Card c : fHandCard) {
-			if (c.getClass().getName() == "Card") {
+			if (!(c instanceof ActionCard)) {
 				return true;
 			}
 		}
@@ -62,9 +75,9 @@ public class Player {
 	public boolean win() {
 		if (fHandCard.size() == 0) {
 			return true;
-		} else {
+		}
+		else {
 			return false;
 		}
 	}
-
 }
